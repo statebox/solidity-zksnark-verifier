@@ -570,12 +570,14 @@ contract Verifier {
             vk_x = Pairing.addition(vk_x, Pairing.scalar_mul(vk.IC[i + 1], input[i]));
         vk_x = Pairing.addition(vk_x, vk.IC[0]);
 
+        Pairing.G1Point memory V_g1_with_acc = Pairing.addition(vk_x, proof.V_g1);
+
         // USCS uses three pairing checks
         // 1: Check knowledge commitment of V
-        if (!Pairing.pairingProd2(proof.V_g1, Pairing.P2(), Pairing.negate(Pairing.P1()), proof.V_g2)) return 1;
+        if (!Pairing.pairingProd2(V_g1_with_acc, Pairing.P2(), Pairing.negate(Pairing.P1()), proof.V_g2)) return 1;
                                                                         
         // 2: Check SSP divisibility
-        if (!Pairing.pairingProd3(Pairing.negate(proof.V_g1), proof.V_g2, proof.H_g1, vk.Z_g2, Pairing.P1(), Pairing.P2())) return 2;
+        if (!Pairing.pairingProd3(Pairing.negate(V_g1_with_acc), proof.V_g2, proof.H_g1, vk.Z_g2, Pairing.P1(), Pairing.P2())) return 2;
 
         // 3: Check same coefficients were used
         if (!Pairing.pairingProd2(proof.V_g1, vk.alphaTilde, Pairing.negate(proof.alphaV_g1), vk.tilde)) return 3;

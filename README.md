@@ -3,3 +3,19 @@ This repo containts a Solidity contract based on the verifier contract created b
 Boolean circuit-based SNARKs use different parameters than R1CS SNARKs, which neccessitates this modified version.
 
 This [part of libsnark](https://github.com/scipr-lab/libsnark/blob/master/libsnark/zk_proof_systems/ppzksnark/uscs_ppzksnark/uscs_ppzksnark.tcc#L447-L528) was used as a reference to create the verifier contract.
+
+## Running a Contract
+The Solidity contracts in this file can be run using the [Remix IDE](remix.ethereum.org), [truffle.js](https://github.com/trufflesuite/truffle), or [web3.js](https://github.com/ethereum/web3.js/).
+
+## Running the hardcoded verifier with Remix IDE
+The [hardcoded_tbcs_verifer.sol] contract can be run as-is on Remix IDE. 
+
+First load the contract into the IDE. 
+
+Compile the code with the 0.5.11 version of the Solidity compiler.
+
+Deploy each of the three functions found in the contract: `BN256G2`, `Pairing`, and `Verifier`.
+
+Once each has been deployed, simply run the `verifiyTx` function with no input data.
+
+

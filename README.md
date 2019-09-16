@@ -7,7 +7,7 @@ This [part of libsnark](https://github.com/scipr-lab/libsnark/blob/master/libsna
 ## Running a Contract
 The Solidity contracts in this file can be run using the [Remix IDE](remix.ethereum.org), [truffle.js](https://github.com/trufflesuite/truffle), or [web3.js](https://github.com/ethereum/web3.js/).
 
-## Running the hardcoded verifier with Remix IDE
+### Running the hardcoded verifier with Remix IDE
 The [hardcoded_tbcs_verifer.sol](hardcoded_tbcs_verifer.sol) contract can be run as-is on Remix IDE. 
 
 - First open the contract in Remix. 
